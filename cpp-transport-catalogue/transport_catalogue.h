@@ -42,34 +42,36 @@ public:
   struct Bus;
   struct Stop {
     Stop() = default;
-    explicit Stop(const std::string &name) : name(name){};
-    explicit Stop(const std::string &name, const detail::Coordinates coordinates)
-        : name(name), coordinates(coordinates){};
+    explicit Stop(const std::string &);
+    explicit Stop(const std::string &, detail::Coordinates);
     const std::string name{};
-    detail::Coordinates coordinates{};
+    std::optional<detail::Coordinates> coordinates{};
     // набор автобусов по остановке, set для избавления от повторов
-    std::set<Bus *> buses{};
+    //    std::set<Bus *> buses{};
+    std::set<std::string_view> buses{};
   };
 
   struct Bus {
     Bus() = default;
-    explicit Bus(const std::string &name, const std::vector<Stop *> &stops)
-        : name(name), stops(stops){};
+    explicit Bus(const std::string &, const std::vector<Stop *> &);
     const std::string name{};
     // вектор с остановками по маршруту автобуса, vector - важен порядок
     const std::vector<Stop *> stops{};
+    double routelength = .0;
   };
 
   struct StopInfo {
     StopInfo() = default;
-    explicit StopInfo(const std::string &name) : name(name){};
+    explicit StopInfo(const std::string &);
+    explicit StopInfo(const std::string &,
+                      const std::vector<std::string_view> &);
     const std::string name{};
     std::vector<std::string_view> buses{};
   };
 
   struct BusInfo {
     BusInfo() = default;
-    explicit BusInfo(std::string_view name) : name(std::string(name)){};
+    explicit BusInfo(std::string_view);
     const std::string name{};
     size_t stops = 0;
     size_t unique_stops = 0;
@@ -82,21 +84,27 @@ public:
       std::unordered_map<StopPtrPair, double, detail::pair_hash>;
 
   explicit TransportCatalogue() = default;
-  // добавление маршрута автобуса в базу
-  // Если остановка не внесена в базу - заносит
+  // добавление маршрута автобуса в базу производится со сложностью
+  // амортизированная O(K) в среднем, где K — длина названия
   void addBus(std::string_view, const std::vector<std::string_view> &);
+  // reduce
   size_t getBusesCount() const;
-  //  добавление остановки в базу и её описания
+  // добавление остановки в базу и её описания производится со сложностью
+  // амортизированная O(K) в среднем, где K — длина названия
   void addStop(std::string_view, detail::Coordinates,
                std::unordered_map<std::string_view, unsigned long> &);
+  // reduce
   size_t getStopsCount() const;
-  //  поиск маршрута по имени
+  // нахождение маршрута по названию в среднем амортизированная O(K), где K —
+  // длина названия
   std::optional<Bus *> findBus(std::string_view) const;
-  //  поиск остановки по имени,
+  // нахождение остановки по названию в среднем амортизированная O(K), где K —
+  // длина названия
   std::optional<Stop *> findStop(std::string_view) const;
-  //  получение информации о маршруте.
+  // получение информации о маршруте производится со сложностью амортизированная
+  // O(1) в среднем.
   std::optional<BusInfo> getBusInfo(std::string_view) const;
-  //  получение информации об остановке.
+  //  получение информации об остановке. Требований по сложности не установленно
   std::optional<StopInfo> getStopInfo(std::string_view) const;
 
 private:
@@ -114,58 +122,26 @@ private:
   DistanceMap routeDistances_;
 
   struct GetKnownStop {
-    GetKnownStop(std::vector<TransportCatalogue::Stop *> &busStops,
-                 TransportCatalogue *const catalog)
-        : busStops_(busStops), catalog_(catalog){};
-    void operator()(std::string_view stop_name) const {
-      auto stop = catalog_->findStop(std::string(stop_name));
-      if (!stop) { // если не нашлась - создает новую
-        stop = std::optional<TransportCatalogue::Stop *>{
-            catalog_->addStop_(stop_name)};
-      }
-      busStops_.push_back(*stop);
-    }
+    GetKnownStop(std::vector<TransportCatalogue::Stop *> &,
+                 TransportCatalogue *);
+    void operator()(std::string_view) const;
 
   private:
     std::vector<TransportCatalogue::Stop *> &busStops_;
     TransportCatalogue *const catalog_;
   };
   struct GetGeoDistance {
-    explicit GetGeoDistance(TransportCatalogue::DistanceMap &distances)
-        : distances_(distances) {}
+    explicit GetGeoDistance(TransportCatalogue::DistanceMap &distances);
     double operator()(const TransportCatalogue::Stop *firstStop,
-                      const TransportCatalogue::Stop *secondStop) const {
-      double result = .0;
-      const auto iter = distances_.find({firstStop, secondStop});
-      if (iter == distances_.end()) {
-        // рассчитать расстояние
-        result =
-            ComputeDistance(firstStop->coordinates, secondStop->coordinates);
-        distances_.emplace(std::make_pair(firstStop, secondStop), result);
-
-      } else {
-        result = iter->second;
-      }
-      return result;
-    }
+                      const TransportCatalogue::Stop *secondStop) const;
 
   private:
     TransportCatalogue::DistanceMap &distances_;
   };
   struct GetDistance {
-    explicit GetDistance(const TransportCatalogue::DistanceMap &routeDistances)
-        : routeDistances_(routeDistances) {}
+    explicit GetDistance(const TransportCatalogue::DistanceMap &routeDistances);
     unsigned long operator()(const TransportCatalogue::Stop *firstStop,
-                             const TransportCatalogue::Stop *secondStop) const {
-      if (routeDistances_.empty()) {
-        return 0;
-      }
-      auto iter = routeDistances_.find({firstStop, secondStop});
-      if (iter == routeDistances_.end()) {
-        iter = routeDistances_.find({secondStop, firstStop});
-      }
-      return iter->second;
-    }
+                             const TransportCatalogue::Stop *secondStop) const;
 
   private:
     const TransportCatalogue::DistanceMap &routeDistances_;

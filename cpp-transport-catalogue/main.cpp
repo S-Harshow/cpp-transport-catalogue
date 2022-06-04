@@ -9,13 +9,13 @@ using namespace std;
 
 int main() {
   using namespace transport;
-  //  tests::TestTransportCatalogue();
-  vector<io::Query> query = io::stream::read(cin);
-  TransportCatalogue catalog;
-  fillCatalogue(&catalog, query);
+  tests::TestTransportCatalogue();
+  //  vector<io::Query> query = io::stream::read(cin);
+  //  TransportCatalogue catalog;
+  //  fillCatalogue(&catalog, query);
 
-  vector<io::Query> requests = io::stream::read(cin);
-  auto responses = executeRequests(&catalog, requests);
-  cout << (*responses) << endl;
+  //  vector<io::Query> requests = io::stream::read(cin);
+  //  auto responses = executeRequests(&catalog, requests);
+  //  cout << (*responses) << endl;
   return 0;
 }
