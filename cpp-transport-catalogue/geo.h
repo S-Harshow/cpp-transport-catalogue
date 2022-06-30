@@ -1,6 +1,7 @@
 #pragma once
 
-namespace transport::detail {
+namespace transport {
+namespace detail {
 
 struct Coordinates {
   double lat; // Широта
@@ -11,4 +12,5 @@ struct Coordinates {
 
 double ComputeDistance(Coordinates, Coordinates);
 
-} // namespace transport::detail
+} // namespace detail
+} // namespace transport

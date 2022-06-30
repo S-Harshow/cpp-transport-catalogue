@@ -1,13 +1,9 @@
 #pragma once
 
-/*
- * Здесь можно разместить код транспортного справочника
- */
-
 #include "domain.h"
 #include "geo.h"
 #include <cstddef>
-#include <deque>
+//#include <deque>
 #include <iomanip>
 #include <map>
 #include <optional>
@@ -15,7 +11,7 @@
 #include <string>
 #include <string_view>
 #include <unordered_map>
-#include <vector>
+//#include <vector>
 
 using namespace std::string_literals;
 
@@ -88,6 +84,8 @@ private:
   // расстояния измеренные (по одометру)
   DistanceMap routeDistances_;
 
+  Stop *addStop_(std::string_view);
+  // функторы
   struct GetKnownStop {
     GetKnownStop(std::vector<Stop *> &, TransportCatalogue *);
     void operator()(std::string_view) const;
@@ -103,14 +101,13 @@ private:
   private:
     TransportCatalogue::DistanceMap &distances_;
   };
-  struct GetDistance {
-    explicit GetDistance(const TransportCatalogue::DistanceMap &routeDistances);
-    unsigned long operator()(const Stop *firstStop,
+  struct GetRouteDistance {
+    explicit GetRouteDistance(const TransportCatalogue::DistanceMap &routeDistances);
+    double operator ()(const Stop *firstStop,
                              const Stop *secondStop) const;
 
   private:
     const TransportCatalogue::DistanceMap &routeDistances_;
   };
-  Stop *addStop_(std::string_view);
 };
 } // namespace transport

@@ -15,9 +15,13 @@ double RenderSettings::lineWidth() const { return line_width_; }
 
 double RenderSettings::stopRadius() const { return stop_radius_; }
 
-int RenderSettings::busLabelFontSize() const { return bus_label_font_size_; }
+uint32_t RenderSettings::busLabelFontSize() const {
+  return bus_label_font_size_;
+}
 
-int RenderSettings::stopLabelFontSize() const { return stop_label_font_size_; }
+uint32_t RenderSettings::stopLabelFontSize() const {
+  return stop_label_font_size_;
+}
 
 double RenderSettings::underlayerWidth() const { return underlayer_width_; }
 
@@ -64,7 +68,7 @@ bool RenderSettings::isValid() const {
   if (0 > stop_radius_ || MaxRenderSize < stop_radius_) {
     return false;
   }
-  if (0 > bus_label_font_size_ || MaxRenderSize < bus_label_font_size_) {
+  if ( MaxRenderSize < bus_label_font_size_) {
     return false;
   }
   if (-MaxRenderSize > bus_label_offset_[0] ||
@@ -75,7 +79,7 @@ bool RenderSettings::isValid() const {
       MaxRenderSize < bus_label_offset_[1]) {
     return false;
   }
-  if (0 > stop_label_font_size_ || MaxRenderSize < stop_label_font_size_) {
+  if (MaxRenderSize < stop_label_font_size_) {
     return false;
   }
   if (-MaxRenderSize > stop_label_offset_[0] ||
@@ -112,12 +116,12 @@ void RenderSettings::setSize(double newWidth, double newHeight,
 }
 
 void RenderSettings::setStopExterior(
-    double newStop_radius, int newStop_label_font_size,
+    double newStop_radius, uint32_t newStop_label_font_size,
     std::array<double, 2> newStop_label_offset) {
   if (0 > newStop_radius || MaxRenderSize < newStop_radius) {
     return;
   }
-  if (0 > newStop_label_font_size || MaxRenderSize < newStop_label_font_size) {
+  if (MaxRenderSize < newStop_label_font_size) {
     return;
   }
   if (-MaxRenderSize > newStop_label_offset[0] ||
@@ -133,9 +137,9 @@ void RenderSettings::setStopExterior(
   stop_label_font_size_ = newStop_label_font_size;
 }
 
-void RenderSettings::setBusExterior(int newBus_label_font_size,
+void RenderSettings::setBusExterior(uint32_t newBus_label_font_size,
                                     std::array<double, 2> newBus_label_offset) {
-  if (0 > newBus_label_font_size || MaxRenderSize < newBus_label_font_size) {
+  if (MaxRenderSize < newBus_label_font_size) {
     return;
   }
   if (-MaxRenderSize > newBus_label_offset[0] ||

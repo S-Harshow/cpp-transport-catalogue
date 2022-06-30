@@ -13,14 +13,25 @@ namespace transport {
 // вывод данных в различных форматах
 class Outputter {
 public:
-  //  virtual ~Outputter() = default;
+  Outputter() = default;
+  Outputter(const Outputter &other) = default;
+  Outputter(Outputter &&other) = default;
+  Outputter &operator=(const Outputter &other) = delete;
+  Outputter &operator=(Outputter &&other) = delete;
+  virtual ~Outputter() = default;
+
   virtual void SetResponses(const Responses &) = 0;
 };
 // Базовый абстрактный класс Inputter - интерфейс для классов, реализующих
 // ввод данных в различных форматах
 class Inputter {
 public:
-  //  virtual ~Inputter() = default;
+  Inputter() = default;
+  Inputter(const Inputter &other) = default;
+  Inputter(Inputter &&other) = default;
+  Inputter &operator=(const Inputter &other) = delete;
+  Inputter &operator=(Inputter &&other) = delete;
+  virtual ~Inputter() = default;
   virtual void ParseInput() = 0;
   [[nodiscard]] virtual std::optional<Requests>
       GetRequests(RequestType) const = 0;
@@ -50,11 +61,17 @@ private:
   std::istream &input_stream_;
   std::unordered_map<RequestType, Requests> requests_repo_{};
 };
-} // namespace transport
 
-namespace transport::io::json::detail {
+
+namespace io::json::detail {
 class Parser {
 public:
+  Parser()= default;
+  Parser(const Parser &other) = default;
+  Parser(Parser &&other) = default;
+  Parser &operator=(const Parser &other) = delete;
+  Parser &operator=(Parser &&other) = delete;
+
   virtual std::optional<Requests> parseSection(const Node &map);
   [[nodiscard]] virtual RequestType GetType() const = 0;
 
@@ -99,5 +116,5 @@ struct JsonNodeBuilder {
   [[nodiscard]] Node operator()(const std::monostate & /*unused*/) const;
   int request_id;
 };
-
 } // namespace transport::io::json::detail
+} // namespace transport

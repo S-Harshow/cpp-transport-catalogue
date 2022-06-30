@@ -22,6 +22,7 @@ TransportCatalogue::Stop::Stop(const std::string &name,
 TransportCatalogue::Bus::Bus(const std::string &name,
                              const std::vector<Stop *> &stops)
     : name(name), stops(stops) {}
+
 void TransportCatalogue::addBus(std::string_view busName,
                                 const vector<string_view> &stops,
                                 bool is_roundtrip) {
@@ -107,8 +108,8 @@ optional<BusStat>
 TransportCatalogue::getBusStat(std::string_view bus_name) const {
   if (auto bus = findBus(bus_name); bus) {
     vector<Stop *> stops((*bus)->stops);
+
     vector<double> geoDistances{};
-    GetGeoDistance getGeoDistance(geoDistances_);
     /* согласно рекомендации @Савва: "Агрегатная и временная информация
     не должна считаться просто так. Если был запрос на информацию о остановке ли
     маршруте: считаем кол-во остановок, длину маршрута, кривизну итд"
@@ -121,19 +122,24 @@ TransportCatalogue::getBusStat(std::string_view bus_name) const {
     // При большом количестве запросов расстояния между остановками уже будут
     // посчитаны и сохранены в geoDistances_
     transform(stops.begin(), prev(stops.end()), next(stops.begin()),
-              back_inserter(geoDistances), getGeoDistance);
-    vector<unsigned long> distances{};
+              back_inserter(geoDistances), GetGeoDistance(geoDistances_));
+
+    vector<double> route_distances{};
     transform(stops.begin(), prev(stops.end()), next(stops.begin()),
-              back_inserter(distances), GetDistance(routeDistances_));
+              back_inserter(route_distances),
+              GetRouteDistance(routeDistances_));
+
     BusStat bus_info(bus_name);
     bus_info.stops = stops.size();
     sort(stops.begin(), stops.end());
+
     auto new_end = unique(stops.begin(), stops.end());
     stops.erase(new_end, stops.end());
     bus_info.unique_stops = stops.size();
     bus_info.geolength =
         accumulate(geoDistances.begin(), geoDistances.end(), .0);
-    bus_info.routelength = accumulate(distances.begin(), distances.end(), 0);
+    bus_info.routelength =
+        accumulate(route_distances.begin(), route_distances.end(), .0);
     return {bus_info};
   }
   return nullopt;
@@ -203,8 +209,8 @@ TransportCatalogue::GetGeoDistance::operator()(const Stop *firstStop,
   if (iter == distances_.end() && firstStop->coordinates &&
       secondStop->coordinates) {
     // рассчитать расстояние
-    result = ComputeDistance(firstStop->coordinates.value(),
-                             secondStop->coordinates.value());
+    result = detail::ComputeDistance(firstStop->coordinates.value(),
+                                     secondStop->coordinates.value());
     distances_.emplace(std::make_pair(firstStop, secondStop), result);
 
   } else {
@@ -212,14 +218,14 @@ TransportCatalogue::GetGeoDistance::operator()(const Stop *firstStop,
   }
   return result;
 }
-TransportCatalogue::GetDistance::GetDistance(
+TransportCatalogue::GetRouteDistance::GetRouteDistance(
     const TransportCatalogue::DistanceMap &routeDistances)
     : routeDistances_(routeDistances) {}
-unsigned long
-TransportCatalogue::GetDistance::operator()(const Stop *firstStop,
-                                            const Stop *secondStop) const {
+double
+TransportCatalogue::GetRouteDistance::operator()(const Stop *firstStop,
+                                                 const Stop *secondStop) const {
   if (routeDistances_.empty()) {
-    return 0;
+    return 0.;
   }
   auto iter = routeDistances_.find({firstStop, secondStop});
   if (iter == routeDistances_.end()) {

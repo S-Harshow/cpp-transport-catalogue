@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.0, 2022-06-17T00:11:47. -->
+<!-- Written by QtCreator 7.0.0, 2022-07-01T04:17:42. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -152,7 +152,8 @@
 -DQT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}
 -DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
 -DCMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}
--DCMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
+-DCMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}
+-DCMAKE_EXTRA_GENERATOR:STRING=CodeBlocks</value>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/harshow/Projects/cpp_practicum/sprint10/transport_catalogue/build-sprint10_transport_catalogue-Desktop-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
@@ -295,15 +296,18 @@
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.0">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">true</value>
+    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectSystime">true</value>
     <value type="QString" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">6</value>
+    <value type="QString" key="Analyzer.Valgrind.LeakCheckOnFinish">2</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
     <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">/usr/bin/valgrind</value>
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">sprint10_transport_catalogue</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.sprint10_transport_catalogue</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">sprint10_transport_catalogue</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">sprint11_transport_catalogue</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.sprint11_transport_catalogue</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">sprint11_transport_catalogue</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>

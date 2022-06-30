@@ -37,9 +37,7 @@ private:
   std::shared_ptr<Inputter> inputter_{};
 };
 
-} // namespace transport
-
-namespace transport::detail {
+namespace detail {
 struct BaseRequestHandler {
   // Выполнить запрос на добавление Остановки
   void operator()(const StopQuery &query) const;
@@ -75,3 +73,4 @@ struct StatRequestHandler {
   int request_id_;
 };
 } // namespace transport::detail
+} // namespace transport

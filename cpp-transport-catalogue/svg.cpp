@@ -76,9 +76,9 @@ istream &operator>>(std::istream &in_, Color &color) {
       color = Rgba(line);
     }
   }
-  size_t alpha_cout =
+  auto alpha_cout = static_cast<unsigned long>(
       std::count_if(line.begin(), line.end(),
-                    [](unsigned char ch_) { return std::isalpha(ch_); });
+                    [](unsigned char ch_) { return std::isalpha(ch_); }));
   if (line.size() == alpha_cout) {
     color = line;
   }
@@ -239,6 +239,7 @@ void Document::Render(std::ostream &out) const {
     object->Render(ctx);
   }
   out << "</svg>"sv << endl;
+  out.flush();
 }
 
 // ---------- Rgb------------------
@@ -250,18 +251,20 @@ Rgb::Rgb(std::string_view color) {
   if (color.empty()) {
     return;
   }
-  Rgb tmp;
   vector<string_view> rgb_vector = SplitStringToVector(color, ',');
   if (3 != rgb_vector.size()) {
     return;
   }
+  Rgb tmp;
   try {
-    tmp.red = std::stoi(string(rgb_vector.at(0)));
-    tmp.green = std::stoi(string(rgb_vector.at(1)));
-    tmp.blue = std::stoi(string(rgb_vector.at(2)));
+    tmp.red = static_cast<uint8_t>(std::stoi(string(rgb_vector.at(0))));
+    tmp.green = static_cast<uint8_t>(std::stoi(string(rgb_vector.at(1))));
+    tmp.blue = static_cast<uint8_t>(std::stoi(string(rgb_vector.at(2))));
+
   } catch (...) {
     return;
   }
+
   swap(*this, tmp);
 }
 
@@ -280,9 +283,9 @@ Rgba::Rgba(std::string_view color) {
     return;
   }
   try {
-    tmp.red = std::stoi(string(rgba_vector.at(0)));
-    tmp.green = std::stoi(string(rgba_vector.at(1)));
-    tmp.blue = std::stoi(string(rgba_vector.at(2)));
+    tmp.red = static_cast<uint8_t>(std::stoi(string(rgba_vector.at(0))));
+    tmp.green = static_cast<uint8_t>(std::stoi(string(rgba_vector.at(1))));
+    tmp.blue = static_cast<uint8_t>(std::stoi(string(rgba_vector.at(2))));
     tmp.opacity = std::stod(string(rgba_vector.at(3)));
   } catch (...) {
     return;

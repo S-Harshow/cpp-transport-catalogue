@@ -1,6 +1,8 @@
 #include "request_handler.h"
 
 #include <utility>
+using namespace transport;
+using namespace transport::detail;
 
 void transport::detail::BaseRequestHandler::operator()(
     const StopQuery &query) const {
@@ -14,8 +16,8 @@ void transport::detail::BaseRequestHandler::operator()(
     const BusQuery &query) const {
   std::vector<std::string_view> stops(query.stops.begin(), query.stops.end());
   if (!query.is_roundtrip) {
-    size_t size = (stops.size());
-    stops.resize(2 * size - 1);
+    int size = static_cast<int>(stops.size());
+    stops.resize(2 * stops.size() - 1);
     copy(stops.begin(), stops.begin() + size - 1, stops.begin() + size);
     reverse(stops.begin() + size, stops.end());
   }

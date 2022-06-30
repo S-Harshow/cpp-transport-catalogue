@@ -6,17 +6,19 @@ inline constexpr const char *MAP_ROUTE_NAME_FONT_WEIGHT = "bold";
 
 using namespace std;
 using namespace transport;
-namespace transport::renderer {
+using namespace transport::renderer;
 
-bool IsZero(double value) { return std::abs(value) < EPSILON; }
+bool transport::renderer::IsZero(double value) {
+  return std::abs(value) < EPSILON;
+}
 
 /*--------------------------- SphereProjector --------------------------------*/
-svg::Point
-SphereProjector::operator()(transport::detail::Coordinates coords) const {
+svg::Point transport::renderer::SphereProjector::operator()(
+    transport::detail::Coordinates coords) const {
   return {(coords.lng - min_lon_) * zoom_coeff_ + padding_,
           (max_lat_ - coords.lat) * zoom_coeff_ + padding_};
 }
-} // namespace transport::renderer
+
 /* ----------------------- Созидатель карты -------------------------------- */
 void transport::MapRenderer::SetSettings(
     const renderer::RenderSettings &settings) {

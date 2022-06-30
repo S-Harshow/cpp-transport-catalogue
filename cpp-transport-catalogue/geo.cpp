@@ -1,10 +1,12 @@
 #include "geo.h"
 
-#define _USE_MATH_DEFINES
+#define USE_MATH_DEFINES
 #include <cmath>
 
-namespace transport::detail {
+namespace transport {
+namespace detail {
 const double EARTH_RADIUS = 6371000.;
+const double EPSILON = 1.e-6;
 
 double ComputeDistance(Coordinates distance_from, Coordinates distance_to) {
   using namespace std;
@@ -19,11 +21,12 @@ double ComputeDistance(Coordinates distance_from, Coordinates distance_to) {
 }
 
 bool Coordinates::operator==(Coordinates other) const {
-  return lat == other.lat && lng == other.lng;
+  return std::abs(lat - other.lat) < EPSILON &&
+         std::abs(lng - other.lng) < EPSILON;
 }
 
 bool Coordinates::operator!=(Coordinates other) const {
   return !(*this == other);
 }
-
-} // namespace transport::detail
+} // namespace detail
+} // namespace transport

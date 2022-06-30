@@ -15,7 +15,8 @@
 #include <vector>
 
 using namespace std::string_view_literals;
-namespace transport::detail {
+namespace transport {
+namespace detail {
 template <typename T> void hash_combine(std::size_t &seed, T const &key) {
   std::hash<T> hasher;
   seed ^= hasher(key) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
@@ -37,7 +38,7 @@ struct pair_hash {
 };
 } // namespace transport::detail
 
-namespace transport::renderer {
+namespace renderer {
 /* --------------- Структура представляющие параметры рендера --------------- */
 class RenderSettings {
 public:
@@ -46,9 +47,9 @@ public:
   [[nodiscard]] double padding() const;
   [[nodiscard]] double lineWidth() const;
   [[nodiscard]] double stopRadius() const;
-  [[nodiscard]] int busLabelFontSize() const;
+  [[nodiscard]] uint32_t busLabelFontSize() const;
   [[nodiscard]] svg::Point busLabelOffset() const;
-  [[nodiscard]] int stopLabelFontSize() const;
+  [[nodiscard]] uint32_t stopLabelFontSize() const;
   [[nodiscard]] svg::Point stopLabelOffset() const;
   [[nodiscard]] const svg::Color &underlayerColor() const;
   [[nodiscard]] double underlayerWidth() const;
@@ -57,10 +58,10 @@ public:
   [[nodiscard]] bool isValid() const;
 
   void setSize(double newWidth, double newHeight, double newPadding);
-  void setStopExterior(double newStop_radius, int newStop_label_font_size,
+  void setStopExterior(double newStop_radius, uint32_t newStop_label_font_size,
                        std::array<double, 2> newStop_label_offset);
 
-  void setBusExterior(int newBus_label_font_size,
+  void setBusExterior(uint32_t newBus_label_font_size,
                       std::array<double, 2> newBus_label_offset);
 
   void setUnderlayerExterior(double newUnderlayer_width,
@@ -82,18 +83,18 @@ private:
                         // Вещественное число в диапазоне от 0 до 100000.
   double stop_radius_{}; // радиус окружностей, которыми обозначаются остановки.
                          // Вещественное число в диапазоне от 0 до 100000.
-  int bus_label_font_size_{}; // размер текста, которым написаны названия
-                              // автобусных маршрутов. Целое число в диапазоне
-                              // от 0 до 100000.
+  uint32_t bus_label_font_size_{}; // размер текста, которым написаны названия
+                                   // автобусных маршрутов. Целое число в
+                                   // диапазоне от 0 до 100000.
   std::array<double, 2>
       bus_label_offset_{}; // смещение надписи с названием маршрута относительно
                            // координат конечной остановки на карте. Массив из
                            // двух элементов типа double. Задаёт значения
                            // свойств dx и dy SVG-элемента <text>. Элементы
                            // массива — числа в диапазоне от –100000 до 100000.
-  int stop_label_font_size_{}; // размер текста, которым отображаются названия
-                               // остановок. Целое число в диапазоне от 0 до
-                               // 100000.
+  uint32_t stop_label_font_size_{}; // размер текста, которым отображаются
+                                    // названия остановок. Целое число в
+                                    // диапазоне от 0 до 100000.
   std::array<double, 2>
       stop_label_offset_{}; // смещение названия остановки относительно её
                             // координат на карте. Массив из двух элементов типа
@@ -110,8 +111,6 @@ private:
       color_palette_{}; //  цветовая палитра. Непустой массив.
 };
 } // namespace transport::renderer
-
-namespace transport {
 
 // Запросы на добавление и на извлечение информации используют одну структуру
 /* --------------- Структуры представляющие Остановку ----------------------- */
@@ -152,7 +151,7 @@ struct BusStat { // Результат со статистикой
   size_t stops = 0;
   size_t unique_stops = 0;
   double geolength = .0;
-  size_t routelength = 0;
+  double routelength = 0;
 };
 
 struct BusInfo {
