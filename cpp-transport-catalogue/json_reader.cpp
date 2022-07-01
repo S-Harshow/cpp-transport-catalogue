@@ -229,7 +229,9 @@ RequestType ParserRenderSettings::GetType() const {
 
 /*--------------------------- JsonOutputter ----------------------------------*/
 transport::JsonOutputter::JsonOutputter(std::ostream &output_stream)
-    : output_stream_(output_stream) {}
+    : output_stream_(output_stream) {
+  output_stream_.unsetf(ios::fixed);
+}
 
 void transport::JsonOutputter::SetResponses(const Responses &responses) {
   Array root_array{};
@@ -239,7 +241,8 @@ void transport::JsonOutputter::SetResponses(const Responses &responses) {
                                 response.value);
             });
   if (!root_array.empty()) {
-    //    Print(Document(Node(root_array)), output_stream_);
+    // output_stream_.setf(ios::scientific);
+    //     Print(Document(Node(root_array)), output_stream_);
     Print(json::Document(json::Builder{}.Value(root_array).Build()),
           output_stream_);
   }
@@ -289,38 +292,82 @@ transport::JsonInputter::GetRequests(RequestType request_type) const {
 
 /*--------------------------- JsonNodeBuilder -------------------------------*/
 Node JsonNodeBuilder::operator()(const StopStat &info) const {
-  Dict info_map{};
-  info_map.emplace(JSON_RESPONSE_ID, Node(request_id));
   Array info_buses{};
   transform(info.buses.begin(), info.buses.end(), back_inserter(info_buses),
             [](const std::string_view bus) { return Node(std::string(bus)); });
-  info_map.emplace(JSON_STOP_BUSES, info_buses);
-  return {info_map};
+  return Builder{}
+      .StartDict()
+      .Key(JSON_RESPONSE_ID)
+      .Value(request_id)
+      .Key(JSON_STOP_BUSES)
+      .Value(info_buses)
+      .EndDict()
+      .Build();
+  //  Dict info_map{};
+  //  info_map.emplace(JSON_RESPONSE_ID, Node(request_id));
+  //  Array info_buses{};
+  //  transform(info.buses.begin(), info.buses.end(), back_inserter(info_buses),
+  //            [](const std::string_view bus) { return Node(std::string(bus));
+  //            });
+  //  info_map.emplace(JSON_STOP_BUSES, info_buses);
+  //  return {info_map};
 }
 
 Node JsonNodeBuilder::operator()(const BusStat &info) const {
-  Dict info_map{};
-  info_map.emplace(JSON_RESPONSE_ID, Node(request_id));
-  info_map.emplace(JSON_BUS_CURVATURE, Node(info.routelength / info.geolength));
-  info_map.emplace(JSON_BUS_ROUTE_LENGTH,
-                   Node(static_cast<double>(info.routelength)));
-  info_map.emplace(JSON_BUS_STOP_COUNT, Node(static_cast<int>(info.stops)));
-  info_map.emplace(JSON_BUS_UNIQUE_STOP_COUNT,
-                   Node(static_cast<int>(info.unique_stops)));
-  return {info_map};
+  return Builder{}
+      .StartDict()
+      .Key(JSON_RESPONSE_ID)
+      .Value(request_id)
+      .Key(JSON_BUS_CURVATURE)
+      .Value(info.routelength / info.geolength)
+      .Key(JSON_BUS_ROUTE_LENGTH)
+      .Value(static_cast<double>(info.routelength))
+      .Key(JSON_BUS_STOP_COUNT)
+      .Value(static_cast<int>(info.stops))
+      .Key(JSON_BUS_UNIQUE_STOP_COUNT)
+      .Value(static_cast<int>(info.unique_stops))
+      .EndDict()
+      .Build();
+
+  //  Dict info_map{};
+  //  info_map.emplace(JSON_RESPONSE_ID, Node(request_id));
+  //  info_map.emplace(JSON_BUS_CURVATURE, Node(info.routelength /
+  //  info.geolength)); info_map.emplace(JSON_BUS_ROUTE_LENGTH,
+  //                   Node(static_cast<double>(info.routelength)));
+  //  info_map.emplace(JSON_BUS_STOP_COUNT, Node(static_cast<int>(info.stops)));
+  //  info_map.emplace(JSON_BUS_UNIQUE_STOP_COUNT,
+  //                   Node(static_cast<int>(info.unique_stops)));
+  //  return {info_map};
 }
 Node JsonNodeBuilder::operator()(const MapStat &info) const {
-  Dict info_map{};
-  info_map.emplace(JSON_RESPONSE_ID, Node(request_id));
-  info_map.emplace(JSON_RESPONSE_MAP, Node(info.map_string));
-  return {info_map};
+  return Builder{}
+      .StartDict()
+      .Key(JSON_RESPONSE_ID)
+      .Value(request_id)
+      .Key(JSON_RESPONSE_MAP)
+      .Value(info.map_string)
+      .EndDict()
+      .Build();
+  //  Dict info_map{};
+  //  info_map.emplace(JSON_RESPONSE_ID, Node(request_id));
+  //  info_map.emplace(JSON_RESPONSE_MAP, Node(info.map_string));
+  //  return {info_map};
 }
 
 Node JsonNodeBuilder::operator()(const std::monostate & /*unused*/) const {
-  Dict info_map{};
-  info_map.emplace(JSON_RESPONSE_ID, Node(request_id));
-  info_map.emplace(JSON_ERROR_MESSAGE, Node(std::string(JSON_ERROR_NOT_FOUND)));
-  return {info_map};
+  return Builder{}
+      .StartDict()
+      .Key(JSON_RESPONSE_ID)
+      .Value(request_id)
+      .Key(JSON_ERROR_MESSAGE)
+      .Value(std::string(JSON_ERROR_NOT_FOUND))
+      .EndDict()
+      .Build();
+
+  //  Dict info_map{};
+  //  info_map.emplace(JSON_RESPONSE_ID, Node(request_id));
+  //  info_map.emplace(JSON_ERROR_MESSAGE,
+  //  Node(std::string(JSON_ERROR_NOT_FOUND))); return {info_map};
 }
 
 /*--------------------------- ParserBuilder --------------------------------*/
