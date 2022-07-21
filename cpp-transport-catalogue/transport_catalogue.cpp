@@ -1,3 +1,6 @@
+/*
+ * Здесь можно разместить код транспортного справочника
+ */
 #include "transport_catalogue.h"
 #include "geo.h"
 #include <algorithm>
@@ -11,7 +14,6 @@
 using namespace std;
 
 using namespace transport;
-
 TransportCatalogue::StopElement::StopElement(const string &name) : name(name) {}
 
 TransportCatalogue::StopElement::StopElement(
@@ -27,6 +29,7 @@ std::unique_ptr<TransportCatalogue> TransportCatalogue::Make() {
 }
 
 void TransportCatalogueImpl::addBus(const BusData &data) {
+
   vector<StopElement *> bus_stops;
   bus_stops.reserve(data.stops.size());
 
@@ -40,6 +43,7 @@ void TransportCatalogueImpl::addBus(const BusData &data) {
 
   new_bus.is_roundtrip = data.is_roundtrip;
   busesIndex_.emplace(new_bus.name, &new_bus);
+  //  cout << "New Bus "sv << data.name << " was added"sv << endl;
 }
 
 TransportCatalogue::StopElement *
@@ -63,6 +67,7 @@ void TransportCatalogueImpl::addStop(const StopData &stop_data) {
       routeDistances_[{stop, nearbyStop}] = distance;
     }
   }
+  //  cout << "New Stop " << data.name << " was added" << endl;
 }
 
 optional<TransportCatalogue::BusElement *>
@@ -148,6 +153,7 @@ TransportCatalogueImpl::getRoutesInfo() const {
                 back_inserter(element.stops), [](const StopElement *stop) {
                   return StopInfo(stop->name, stop->coordinates.value());
                 });
+
       element.is_roundtrip = bus.is_roundtrip;
       result.emplace_back(element);
     }

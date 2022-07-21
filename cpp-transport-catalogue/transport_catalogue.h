@@ -16,8 +16,8 @@ class TransportCatalogue {
 protected:
   struct StopElement {
     StopElement() = default;
-    explicit StopElement(const std::string &name);
-    explicit StopElement(const std::string &, detail::Coordinates);
+    explicit StopElement(const std::string & name);
+    explicit StopElement(const std::string & , detail::Coordinates);
     const std::string name{};
     std::optional<detail::Coordinates> coordinates{};
     std::set<std::string> buses{};
@@ -25,7 +25,7 @@ protected:
 
   struct BusElement {
     BusElement() = default;
-    explicit BusElement(const std::string &name,
+    explicit BusElement(const std::string & name,
                         const std::vector<StopElement *> &);
     const std::string name{};
     // вектор с остановками по маршруту автобуса, vector - важен порядок
@@ -42,6 +42,8 @@ public:
   virtual void addStop(const StopData &) = 0;
 
   virtual std::optional<BusElement *> findBus(const std::string &) const = 0;
+
+//  virtual std::optional<StopElement *> findStop(std::string_view) const = 0;
 
   virtual std::optional<BusStat> getBusStat(const std::string &) const = 0;
 
@@ -72,6 +74,8 @@ public:
 
   std::optional<BusElement *> findBus(const std::string &) const override;
 
+//  std::optional<StopElement *> findStop(std::string_view) const override;
+
   std::optional<BusStat> getBusStat(const std::string &) const override;
 
   std::optional<StopStat> getStopStat(const std::string &) const override;
@@ -99,6 +103,7 @@ private:
   StopElement *getStop_(std::string_view);
 
   // функторы
+
   struct GetGeoDistance {
     explicit GetGeoDistance(DistanceMap &distances);
     double operator()(const StopElement *firstStop,
@@ -109,7 +114,8 @@ private:
   };
 
   struct GetRouteDistance {
-    explicit GetRouteDistance(const DistanceMap &routeDistances);
+    explicit GetRouteDistance(
+        const DistanceMap &routeDistances);
     double operator()(const StopElement *firstStop,
                       const StopElement *secondStop) const;
 

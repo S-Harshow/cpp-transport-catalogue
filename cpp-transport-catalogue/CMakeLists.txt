@@ -61,12 +61,47 @@ else()
 endif()
 message("COMPILE_OPTIONS: ${COMPILE_OPTIONS}")
 
-## sub dir
-add_subdirectory(src)
+set(TRANSPORT_CATALOGUE_HEADERS
+    geo.h                       # объявляет координаты на земной поверхности и вычисляет расстояние между ними
+    domain.h                    # классы основных сущностей, описывают автобусы и остановки
+    transport_catalogue.h       # модуль транспортного каталога
+    request_handler.h           # обрабатывает запросы. Играет роль Фасада, который упрощает взаимодействие с транспортным каталогом
+    json.h                      # ваша улучшенная библиотека для парсинга и вывода JSON
+    json_reader.h               # выполняет разбор JSON-данных, построенных в ходе парсинга, и формирует массив JSON-ответов
+    json_builder.h
+    svg.h
+    map_renderer.h
+    router.h
+    ranges.h
+    graph.h
+    transport_router.h
+)
 
+set(TRANSPORT_CATALOGUE_SOURCES
+    main.cpp                    # основной модуль
+    geo.cpp                     # объявляет координаты на земной поверхности и вычисляет расстояние между ними
+    domain.cpp                  # классы основных сущностей, описывают автобусы и остановки
+    transport_catalogue.cpp     # модуль транспортного каталога
+    request_handler.cpp         # обрабатывает запросы. Играет роль Фасада, который упрощает взаимодействие с транспортным каталогом
+    json.cpp                    # ваша улучшенная библиотека для парсинга и вывода JSON
+    json_reader.cpp             # выполняет разбор JSON-данных, построенных в ходе парсинга, и формирует массив JSON-ответов
+    json_builder.cpp
+    svg.cpp
+    map_renderer.cpp
+    transport_router.cpp
+)
+
+find_package(TBB REQUIRED tbb)
+
+add_executable(${PROJECT_NAME} ${TRANSPORT_CATALOGUE_SOURCES} ${TRANSPORT_CATALOGUE_HEADERS})
+
+target_link_libraries(${PROJECT_NAME}
+  PRIVATE
+  TBB::tbb
+ )
 ## Test
-if(NOT ${PROJECT_NAME}_NO_TESTS)
-    enable_testing()
-    add_subdirectory(tests)
-endif()
+#if(NOT ${PROJECT_NAME}_NO_TESTS)
+#    enable_testing()
+#    add_subdirectory(tests)
+#endif()
 

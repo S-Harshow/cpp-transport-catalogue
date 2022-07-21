@@ -314,13 +314,13 @@ void ColorPrinter::operator()(monostate /*noused*/) const { out << "none"sv; }
 void ColorPrinter::operator()(const std::string &color) const { out << color; }
 
 void ColorPrinter::operator()(Rgb rgb) const {
-  out << "rgb("sv << to_string(rgb.red) << ","sv << to_string(rgb.green)
-      << ","sv << to_string(rgb.blue) << ")"sv;
+  out << "rgb("sv << rgb.red << ","sv << rgb.green << ","sv << rgb.blue
+      << ")"sv;
 }
 
 void ColorPrinter::operator()(Rgba rgba) const {
-  out << "rgba("sv << to_string(rgba.red) << ","sv << to_string(rgba.green)
-      << ","sv << to_string(rgba.blue) << ","sv << rgba.opacity << ")"sv;
+  out << "rgba("sv << rgba.red << ","sv << rgba.green << ","sv << rgba.blue
+      << ","sv << rgba.opacity << ")"sv;
 }
 
 RenderContext::RenderContext(std::ostream &out) : out(out) {}

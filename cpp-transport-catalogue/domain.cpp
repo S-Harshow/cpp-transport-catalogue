@@ -95,17 +95,17 @@ RenderSettings::operator bool() const { return isValid(); }
 
 RenderSettings::operator std::string() const {
   ostringstream ostream;
-  ostream << "\"render_settings\": {\"width\": "sv << width_
-          << ",\"height\": "sv << height_ << ",\"padding\": "sv << padding_
-          << ",\"stop_radius\": "sv << stop_radius_ << ",\"line_width\": "sv
-          << line_width_ << ",\"bus_label_font_size\": "sv
-          << bus_label_font_size_ << ",\"bus_label_offset\": "sv
-          << bus_label_offset_ << ",\"stop_label_font_size\": "sv
-          << stop_label_font_size_ << ",\"stop_label_offset\": "sv
-          << stop_label_offset_ << ",\"underlayer_color\": "sv
-          << underlayer_color_ << ",\"underlayer_width\": "sv
-          << underlayer_width_ << ",\"color_palette\": "sv << color_palette_
-          << "]}"sv << endl;
+  ostream << "\"render_settings\": {\"width\": " << width_
+          << ",\"height\": " << height_ << ",\"padding\": " << padding_
+          << ",\"stop_radius\": " << stop_radius_
+          << ",\"line_width\": " << line_width_
+          << ",\"bus_label_font_size\": " << bus_label_font_size_
+          << ",\"bus_label_offset\": " << bus_label_offset_
+          << ",\"stop_label_font_size\": " << stop_label_font_size_
+          << ",\"stop_label_offset\": " << stop_label_offset_
+          << ",\"underlayer_color\": " << underlayer_color_
+          << ",\"underlayer_width\": " << underlayer_width_
+          << ",\"color_palette\": " << color_palette_ << "]}" << endl;
   return ostream.str();
 }
 
@@ -196,10 +196,8 @@ ostream &operator<<(std::ostream &ostream, const RenderSettings &info) {
 
 /*--------------------------- StopStat --------------------------------------*/
 StopStat::StopStat(const std::string &name) : name(name) {}
-
 StopStat::StopStat(const std::string &name, const std::vector<string> &buses)
     : name(name), buses(buses.begin(), buses.end()) {}
-
 /*--------------------------- BusStat ---------------------------------------*/
 BusStat::BusStat(const std::string &name) : name(/*std::string(name)*/ name) {}
 
@@ -210,14 +208,29 @@ BusData::BusData(const string &name) : name(name) {}
 StopData::StopData(const string &name) : name(name) {}
 
 /*--------------------------- BusInfo ---------------------------------------*/
-BusInfo::BusInfo(string_view name) : name(name), is_roundtrip{false} {}
+BusInfo::BusInfo(string_view name) : name(name) {}
 
 /*--------------------------- StopInfo --------------------------------------*/
 StopInfo::StopInfo(string_view name, detail::Coordinates coordinates)
     : name(name), coordinates(coordinates) {}
 
+/*--------------------------- MapQuery --------------------------------------*/
+// MapQuery::MapQuery(std::string_view name) : name(name) {}
+
 /*--------------------------- MapStat ---------------------------------------*/
 MapStat::MapStat(const string &name) : name(name) {}
+
+/*--------------------------- stream ----------------------------------------*/
+// std::ostream &operator<<(std::ostream &ostream, const Response &response) {
+//   if (response.requestId == 0) {
+//     ostream << "request_id"sv << response.requestId << ": "sv <<
+//     response.value
+//             << std::endl;
+//   } else {
+//     ostream << response.value << std::endl;
+//   }
+//   return ostream;
+// }
 
 std::ostream &operator<<(std::ostream &ostream, const BusStat &value) {
   ostream << "Bus "sv << value.name << ": "sv

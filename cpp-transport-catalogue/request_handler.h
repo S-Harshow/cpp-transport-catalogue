@@ -2,8 +2,8 @@
 
 #include "map_renderer.h"
 #include "ranges.h"
-#include "transport_catalogue/domain.h"
-#include "transport_catalogue/transport_catalogue.h"
+#include "domain.h"
+#include "transport_catalogue.h"
 #include "transport_router.h"
 #include <list>
 #include <memory>
@@ -83,6 +83,7 @@ public:
 
 private:
   IOFactory() = default;
+
   std::unordered_map<std::string_view, Factory> factories_{};
 };
 
@@ -154,6 +155,7 @@ protected:
 class ComputeQuery : public Query {
 public:
   using Query::Query;
+  //  ComputeQuery();
   ~ComputeQuery() override = default;
   void Execute(QueryVisitor &visitor) const override;
 
@@ -217,8 +219,6 @@ public:
   [[nodiscard]] uint getUniqueStopsCount() const;
   [[nodiscard]] double getGeoLength() const;
   [[nodiscard]] double getRouteLength() const;
-  ~StatResponse() override = default;
-
   class Factory : public ResponseFactory {
   public:
     using ResponseFactory::ResponseFactory;
@@ -265,7 +265,7 @@ class AddStopQuery final : public ModifyQuery {
 public:
   using ModifyQuery::ModifyQuery;
   AddStopQuery(const StopData &data);
-
+  ~AddStopQuery() override = default;
   class Factory : public QueryFactory {
   public:
     using QueryFactory::QueryFactory;
@@ -344,7 +344,7 @@ class RenderSettings final : public Query {
 public:
   using Query::Query;
   RenderSettings(const renderer::RenderSettings &settings);
-
+  //  ~AddStopQuery() override = default;
   class Factory : public QueryFactory {
   public:
     using QueryFactory::QueryFactory;
@@ -414,7 +414,7 @@ class RoutingSettings final : public Query {
 public:
   using Query::Query;
   RoutingSettings(const ::transport::router::RoutingSettings &settings);
-
+  //  ~AddStopQuery() override = default;
   class Factory : public QueryFactory {
   public:
     using QueryFactory::QueryFactory;

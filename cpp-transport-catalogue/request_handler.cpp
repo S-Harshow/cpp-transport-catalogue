@@ -32,13 +32,11 @@ EmptyResponse::EmptyResponse(int requestId) : id_(requestId) {}
 void EmptyResponse::accept(Outputter &outputter) { outputter.visit(this); }
 
 int EmptyResponse::getId() const { return id_; }
-
 std::unique_ptr<Response> EmptyResponse::Factory::Construct(int id) const {
   return std::make_unique<EmptyResponse>(id);
 }
 
 namespace bus {
-
 AddBusQuery::AddBusQuery(const BusData &data) : data_(data) {}
 
 void AddBusQuery::Process(QueryVisitor &visitor) const {
@@ -108,7 +106,6 @@ StatResponse::Factory &StatResponse::Factory::SetResponse(const BusStat &data) {
 std::unique_ptr<Response> StatResponse::Factory::Construct(int id) const {
   return std::make_unique<StatResponse>(id, data_);
 }
-
 StatResponse::StatResponse(int id, const BusStat &data)
     : id_(id), data_(data) {}
 
@@ -129,9 +126,7 @@ double StatResponse::getGeoLength() const { return data_.geolength; }
 double StatResponse::getRouteLength() const { return data_.routelength; }
 
 } // namespace bus
-
 namespace stop {
-
 AddStopQuery::AddStopQuery(const StopData &data) : data_(data) {}
 
 void AddStopQuery::Process(QueryVisitor &visitor) const {
@@ -159,11 +154,11 @@ AddStopQuery::Factory &AddStopQuery::Factory::SetDistances(
 
 uniqueQuery AddStopQuery::Factory::Construct() const {
   if (data_.name.empty()) {
-    throw std::logic_error("Name was not added"s);
+    throw std::logic_error("Name was not added");
   }
 
   if (data_.coordinates == detail::Coordinates()) {
-    throw std::logic_error("Coordinates was not added"s);
+    throw std::logic_error("Coordinates was not added");
   }
   return std::make_unique<AddStopQuery>(data_);
 }
@@ -172,6 +167,7 @@ StatStopQuery::StatStopQuery(int requestId, const std::string &name)
     : id_(requestId), name_(name) {}
 
 void StatStopQuery::Process(QueryVisitor &visitor) const {
+  //  cout << "Start StatStopQuery::Process  id = " << id_ << endl;
   if (nullptr != visitor.getCatalog()) {
     if (auto response = visitor.getCatalog()->getStopStat(name_);
         response.has_value()) {
@@ -196,10 +192,10 @@ StatStopQuery::Factory &StatStopQuery::Factory::SetId(int requestId) {
 
 uniqueQuery StatStopQuery::Factory::Construct() const {
   if (name_.empty()) {
-    throw std::logic_error("Name was not added"s);
+    throw std::logic_error("Name was not added");
   }
   if (0 == id_) {
-    throw std::logic_error("Id was not added"s);
+    throw std::logic_error("Id was not added");
   }
   return std::make_unique<StatStopQuery>(id_, name_);
 }
@@ -236,7 +232,6 @@ void StatResponse::accept(Outputter &outputter) { outputter.visit(this); }
 } // namespace stop
 
 namespace map {
-
 RenderSettings::RenderSettings(const renderer::RenderSettings &settings)
     : settings_(settings) {}
 
@@ -257,7 +252,7 @@ RenderSettings::Factory::SetSettings(const renderer::RenderSettings &settings) {
 
 uniqueQuery RenderSettings::Factory::Construct() const {
   if (!settings_) {
-    throw std::logic_error("Renderer settings are not valid"s);
+    throw std::logic_error("Renderer settings are not valid");
   }
   return std::unique_ptr<Query>(new RenderSettings(settings_));
 }
@@ -312,26 +307,29 @@ void MapResponse::accept(Outputter &outputter) { outputter.visit(this); }
 } // namespace map
 
 namespace router {
-
 RoutingSettings::RoutingSettings(
     const transport::router::RoutingSettings &settings)
     : settings_(settings) {}
 
 RoutingSettings::Factory &
 RoutingSettings::Factory::SetBusWaitTime(double time) {
+  //  if (time - 1 > EPSILON && time - 1000 < EPSILON) {
   settings_.bus_wait = time;
+  //  }
   return *this;
 }
 
 RoutingSettings::Factory &
 RoutingSettings::Factory::SetBusVelocity(double velocity) {
+  //  if (velocity - 1 > EPSILON && velocity - 1000 < EPSILON) {
   settings_.bus_velocity = velocity;
+  //  }
   return *this;
 }
 
 uniqueQuery RoutingSettings::Factory::Construct() const {
   if (settings_.bus_wait < 1. || settings_.bus_velocity < 1.0) {
-    throw std::logic_error("Routing settings are not valid"s);
+    throw std::logic_error("Routing settings are not valid");
   }
   return std::unique_ptr<Query>(new RoutingSettings(settings_));
 }
@@ -339,6 +337,7 @@ uniqueQuery RoutingSettings::Factory::Construct() const {
 void RoutingSettings::Execute(QueryVisitor &visitor) const { Process(visitor); }
 
 void RoutingSettings::Process(QueryVisitor &visitor) const {
+  //
   if (visitor.getRouter() != nullptr) {
     visitor.getRouter()->SetSettings(settings_);
   }
@@ -361,10 +360,10 @@ RouteQuery::Factory &RouteQuery::Factory::SetToStop(const std::string &to) {
 
 uniqueQuery RouteQuery::Factory::Construct() const {
   if (stop_from_.empty()) {
-    throw std::logic_error("No stop \"from\" was found"s);
+    throw std::logic_error("No stop \"from\" was found");
   }
   if (stop_to_.empty()) {
-    throw std::logic_error("No stop \"to\" was found"s);
+    throw std::logic_error("No stop \"to\" was found");
   }
   return std::unique_ptr<Query>(new RouteQuery(id_, stop_from_, stop_to_));
 }
@@ -374,19 +373,17 @@ RouteQuery::RouteQuery(int id, const std::string &stop_from,
     : id_(id), stop_from_(stop_from), stop_to_(stop_to) {}
 
 void RouteQuery::Process(QueryVisitor &visitor) const {
-  if (nullptr == visitor.getCatalog() || nullptr == visitor.getRouter()) {
-    visitor.appendResponse(EmptyResponse::Factory().Construct(id_));
-  }
-
+  //  if (nullptr == visitor.getCatalog() || nullptr == visitor.getRouter()) {
+  //    visitor.appendResponse(EmptyResponse::Factory().Construct(id_));
+  //  }
   if (!visitor.getRouter()->IsReady()) {
     const auto routes(visitor.getCatalog()->getRoutesInfo());
     const auto distances(visitor.getCatalog()->getDistances());
-    const size_t stops_count = visitor.getCatalog()->getStopCount();
+    const size_t stops_count(visitor.getCatalog()->getStopCount());
     if (routes.has_value()) {
       visitor.getRouter()->UploadData(stops_count, routes.value(), distances);
     }
   }
-
   if (visitor.getRouter()->IsReady()) {
     auto result(visitor.getRouter()->FindRoute(stop_from_, stop_to_));
     if (result.has_value()) {
@@ -395,7 +392,6 @@ void RouteQuery::Process(QueryVisitor &visitor) const {
       return;
     }
   }
-
   visitor.appendResponse(EmptyResponse::Factory().Construct(id_));
 }
 
@@ -430,6 +426,7 @@ std::unique_ptr<Response> RouteResponse::Factory::Construct(int id) const {
 
 } // namespace router
 
+// namespace router
 } // namespace transport::queries
 
 RequestHandler::RequestHandler(std::unique_ptr<Inputter> inputter,

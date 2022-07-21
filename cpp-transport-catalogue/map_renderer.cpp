@@ -25,6 +25,7 @@ void transport::MapRenderer_impl::SetSettings(
   if (settings.isValid()) {
     settings_ = settings;
   }
+  //  cout << "Установленны на стройки MapRenderer" << endl;
 }
 
 bool MapRenderer_impl::hasSettings() { return settings_.isValid(); }

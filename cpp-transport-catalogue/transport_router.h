@@ -1,7 +1,7 @@
-﻿#pragma once
+#pragma once
 #include "graph.h"
 #include "router.h"
-#include "transport_catalogue/domain.h"
+#include "domain.h"
 #include <memory>
 
 namespace transport {
@@ -59,6 +59,8 @@ private:
   std::unique_ptr<graph::Router<double>> router_;
 
   graph::VertexId GetVertexIDByName(std::string_view stop_name);
+
+  //  void FillGraph(const BusInfo &bus_info, const Distances &distances);
 
   template <typename Iterator>
   void FillGraph(std::string_view bus_name, Iterator begin, Iterator end,

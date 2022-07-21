@@ -1,7 +1,7 @@
 #pragma once
 
 #include "geo.h"
-#include "../svg/svg.h"
+#include "svg.h"
 #include <algorithm>
 #include <array>
 #include <cstddef>
@@ -115,6 +115,8 @@ private:
 };
 }
 
+
+
 // Запросы на добавление и на извлечение информации используют одну структуру
 /* --------------- Структуры представляющие Остановку ----------------------- */
 struct StopData { // Входной запрос
@@ -162,7 +164,7 @@ struct BusInfo {
   explicit BusInfo(std::string_view name);
   std::string_view name;
   std::vector<StopInfo> stops;
-  bool is_roundtrip{};
+  bool is_roundtrip;
 };
 
 struct StopPair_hash {
@@ -170,6 +172,7 @@ struct StopPair_hash {
     auto operator()(const std::pair<T, T>& pair) const {
         return std::hash<T>{}(pair.first) ^ std::hash<T>{}(pair.second); // not to be used in production (combining hashes using XOR is bad practice)
     }
+
     using is_transparent = void; // required to make find() work with different type than key_type
 };
 
@@ -179,12 +182,11 @@ struct StopPair_equal {
                     const std::pair<B, B>& b) const {
         return a.first == b.first && a.second == b.second;
     }
+
     using is_transparent = void; // required to make find() work with different type than key_type
 };
-
 using StopPair =
     std::pair<std::string_view , std::string_view >;
-
 using Distances =
     std::unordered_map<StopPair, double, StopPair_hash, StopPair_equal>;
 
@@ -203,14 +205,12 @@ struct RouteItemStop{
   std::string_view  name;
   double wait_time;
 };
-
 struct RouteItemBus{
   RouteItemBus(std::string_view name, uint span_count, double time):bus_name(name), span_count(span_count), time(time){}
   std::string_view  bus_name;
   uint span_count;
   double time;
 };
-
 using RouteItem = std::variant<RouteItemBus, RouteItemStop>;
 
 template <typename T>
@@ -220,6 +220,8 @@ bool is_type(const RouteItem &item){
 
 struct RouteStat { // Результат со статистикой
   RouteStat() = default;
+//  explicit RouteStat(std::string_view name);
+//  const std::string name{};
   double total_time{};
   std::vector<RouteItem> items;
 };
@@ -239,5 +241,38 @@ std::ostream &operator<<(std::ostream &stream, const std::vector<T> &vector_) {
   }
   return stream << "}"sv;
 }
+
+// Request to Stream
+//std::ostream &operator<<(std::ostream &, const BusData &);
+//std::ostream &operator<<(std::ostream &, const StopData &);
+//std::ostream &operator<<(std::ostream &, const RequestValue &);
+
+//struct RequestToStream {
+//  // Построить ноду для StopInfo
+//  void operator()(const StopData &info) const;
+//  // Построить ноду для StopInfo
+//  void operator()(const BusData &info) const;
+//  void operator()(const MapQuery &info) const;
+//  void operator()(const renderer::RenderSettings &info) const;
+//  void operator()(std::monostate /*unused*/) const;
+//  std::ostream &ostream;
+//};
+
+//// Response to Stream
+//std::ostream &operator<<(std::ostream &, const BusStat &);
+//std::ostream &operator<<(std::ostream &, const StopStat &);
+//std::ostream &operator<<(std::ostream &, const MapStat &);
+//std::ostream &operator<<(std::ostream &, const ResponseValue &);
+//std::ostream &operator<<(std::ostream &, const Response &);
+
+//struct ResponseToStream {
+//  // Построить ноду для StopInfo
+//  void operator()(const StopStat &info) const;
+//  // Построить ноду для StopInfo
+//  void operator()(const BusStat &info) const;
+//  void operator()(const MapStat &info) const;
+//  void operator()(std::monostate /*unused*/) const;
+//  std::ostream &ostream;
+//};
 
 } // namespace transport

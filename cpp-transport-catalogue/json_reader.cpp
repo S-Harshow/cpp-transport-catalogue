@@ -1,7 +1,6 @@
 #include "json_reader.h"
-#include "json/json_builder.h"
+#include "json_builder.h"
 #include <algorithm>
-#include <execution>
 #include <limits>
 #include <sstream>
 
@@ -270,11 +269,12 @@ uniqueQueryList ParserRenderSettings::parseSection(const Node &node) const {
   uniqueQueryList result{};
   if (settings.isValid()) {
     result.push_back(queries::map::RenderSettings::Factory()
-                         .SetSettings(settings)
+                         .SetSettings(move(settings))
                          .Construct());
   }
   return result;
 }
+//} // namespace transport::io::json::detail
 
 /*--------------------------- JsonOutputter ----------------------------------*/
 transport::JsonOutputter::JsonOutputter(ostream &output_stream)
@@ -403,7 +403,11 @@ void JsonOutputter::visit(queries::router::RouteResponse *response) {
 
 /*--------------------------- JsonInputter ----------------------------------*/
 transport::JsonInputter::JsonInputter(istream &input_stream)
-    : input_stream_(input_stream) {}
+    : input_stream_(input_stream) {
+  //  if (!input_stream) {
+  //    Parse();
+  //  }
+}
 
 void JsonInputter::Register() {
   IOFactory<Inputter>::instance().Register("json"sv, JsonInputter::Construct);
@@ -435,7 +439,6 @@ void transport::JsonInputter::Parse() {
   if (input_stream_ && input_stream_.peek(), input_stream_.eof()) {
     return;
   }
-
   Dict root;
   try {
     Document request_doc(Load(input_stream_));
@@ -444,11 +447,10 @@ void transport::JsonInputter::Parse() {
       root = root_node.AsDict();
     }
   } catch (const std::exception &e) {
-    std::cout << "A standard exception was caught, with message '"sv << e.what()
-              << "'"sv << std::endl;
+    std::cout << "A standard exception was caught, with message '" << e.what()
+              << "'" << std::endl;
     return;
   }
-
   input_stream_.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   for_each(root.begin(), root.end(), [this](const auto &section) {
     // Выбрать парсер по названию элемента словаря
@@ -597,13 +599,13 @@ uniqueQuery ParserStat::parseStopNode(const Dict &map) {
       .Construct();
 }
 
-uniqueQuery ParserStat::parseMapNode(const Dict &map) {
+const uniqueQuery ParserStat::parseMapNode(const Dict &map) {
   // Пока самого запроса хватит для постоения карты всех маршрутов
   const auto requestId = getValue<int>(map, JSON_REQUEST_ID);
   return queries::map::MapRender::Factory().SetId(requestId).Construct();
 }
 
-uniqueQuery ParserStat::parseRouteNode(const Dict &map) {
+const uniqueQuery ParserStat::parseRouteNode(const Dict &map) {
   const auto stop_from = getValue<string>(map, STATS_ROUTE_STOP_FROM);
   const auto stop_to = getValue<string>(map, STATS_ROUTE_STOP_TO);
   const auto requestId = getValue<int>(map, JSON_REQUEST_ID);
@@ -613,6 +615,7 @@ uniqueQuery ParserStat::parseRouteNode(const Dict &map) {
       .SetId(requestId)
       .Construct();
 }
+//} // namespace transport::io::json::detail
 
 uniqueQueryList ParserRoutingSettings::parseSection(const Node &node) const {
   if (!node.IsDict()) {

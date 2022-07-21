@@ -1,8 +1,8 @@
 #pragma once
 
-#include "svg/svg.h"
-#include "transport_catalogue/domain.h"
-#include "transport_catalogue/geo.h"
+#include "svg.h"
+#include "domain.h"
+#include "geo.h"
 #include <algorithm>
 #include <array>
 #include <optional>
@@ -80,7 +80,6 @@ private:
 };
 
 } // namespace transport::renderer
-
 namespace transport {
 /* ----------------------- Созидатель карты -------------------------------- */
 class MapRenderer {

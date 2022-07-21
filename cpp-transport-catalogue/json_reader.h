@@ -1,11 +1,11 @@
 #pragma once
 
 #include "request_handler.h"
-#include "json/json.h"
+#include "json.h"
 #include <memory>
 #include <unordered_map>
 
-using namespace json;
+// using namespace json;
 
 namespace transport {
 
@@ -77,20 +77,22 @@ private:
 
 class ParserStat final : public Parser {
 public:
+  //  [[nodiscard]] RequestType GetType() const override;
   [[nodiscard]] uniqueQueryList
   parseSection(const ::json::Node &map) const override;
 
 private:
   static uniqueQuery parseBusNode(const ::json::Dict &map);
   static uniqueQuery parseStopNode(const ::json::Dict &map);
-  static uniqueQuery parseMapNode(const ::json::Dict &map);
-  static uniqueQuery parseRouteNode(const ::json::Dict &map);
+  static const uniqueQuery parseMapNode(const ::json::Dict &map);
+  static const uniqueQuery parseRouteNode(const ::json::Dict &map);
 };
 
 class ParserRenderSettings final : public Parser {
 public:
   [[nodiscard]] uniqueQueryList
   parseSection(const ::json::Node &node) const override;
+  //  [[nodiscard]] RequestType GetType() const override;
 };
 
 class ParserRoutingSettings final : public Parser {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.2, 2022-07-21T12:49:27. -->
+<!-- Written by QtCreator 7.0.2, 2022-07-21T17:09:07. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -67,99 +67,7 @@
     <value type="bool" key="AutoTest.Framework.QtQuickTest">false</value>
     <value type="bool" key="AutoTest.Framework.QtTest">false</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="AutoTest.CheckStates">
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_.cpp:Check_ErrorHandling">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_.cpp:LibJson">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_json_builder.cpp:build_document">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_json_builder.cpp:build_string">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_array.cpp:LibJson_ArrayNode">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_array.cpp:array_node_is_array">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_array.cpp:array_node_size">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_array.cpp:array_node_value_double">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_array.cpp:array_node_value_int">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_array.cpp:array_node_value_string">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_array.cpp:load_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_array.cpp:load_node_w_spaces">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_array.cpp:load_node_w_trash">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_array.cpp:print_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_bool.cpp:LibJson_BoolNode">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_bool.cpp:bool_nodes_are_bool">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_bool.cpp:bool_nodes_value">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_bool.cpp:load_nodes">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_bool.cpp:load_nodes_w_trash">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_bool.cpp:print_nodes">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_map.cpp:LibJson_MapNode">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_map.cpp:load_map_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_map.cpp:load_map_node_w_trash">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_map.cpp:map_node_is_map">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_map.cpp:map_node_value">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_map.cpp:print_map_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:LibJson_NullNode">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:defualt_null_node_is_null">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:load_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:load_null_node_w_trash">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:null_node_is_not_array">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:null_node_is_not_dict">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:null_node_is_not_double">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:null_node_is_not_int">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:null_node_is_not_pure_double">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:null_node_is_not_string">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:null_node_is_null">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:null_nodes_equality">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_null.cpp:print_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:LibJson_NumberNode">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:double_node_is_double">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:double_node_is_not_int">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:double_node_value">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:int_node_can_be_double">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:int_node_is_int">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:int_node_is_not_double">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:int_node_not_equal_to_double_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:int_node_value">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:int_nodes_equal">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:load_double_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:load_double_node_w_trash">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:load_int_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:load_int_node_w_trash">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:print_double_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_numbers.cpp:print_int_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_string.cpp:LibJson_StringNode">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_string.cpp:load_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_string.cpp:load_node_w_trash">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_string.cpp:print_string_node">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_string.cpp:string_node_is_string">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_string.cpp:string_node_no_double">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_string.cpp:string_node_no_int">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json/t_node_string.cpp:string_node_value">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json_reader/t_json_reader.cpp:Check_Base_Request_bus_from_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json_reader/t_json_reader.cpp:Check_Base_Request_stops_from_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json_reader/t_json_reader.cpp:Check_Map_Request_from_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json_reader/t_json_reader.cpp:Check_Render_Settings_from_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json_reader/t_json_reader.cpp:Check_Router_Response_to_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json_reader/t_json_reader.cpp:Check_Routing_Settings_from_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json_reader/t_json_reader.cpp:Check_Stat_Request_bus_from_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json_reader/t_json_reader.cpp:Check_Stat_Request_route_from_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json_reader/t_json_reader.cpp:Check_Stat_Request_stop_from_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/json_reader/t_json_reader.cpp:JsonReader">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/renderer/t_map_renderer.cpp:Check_JSON_from_file_pt5_w_SVG">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/renderer/t_map_renderer.cpp:Check_Settings_from_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/renderer/t_map_renderer.cpp:MapRenderer">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/renderer/t_map_renderer.cpp:s10_final_opentest_1">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/renderer/t_map_renderer.cpp:s10_final_opentest_2">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/renderer/t_map_renderer.cpp:s10_final_opentest_3">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_catalogue/t_transport_catalogue.cpp:Check_Bus_response_2stops_nolap_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_catalogue/t_transport_catalogue.cpp:Check_Bus_response_3stops_lap_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_catalogue/t_transport_catalogue.cpp:main_Handler">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_router/t_transport_router.cpp:Check_Routing_Test1_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_router/t_transport_router.cpp:Check_Routing_Test2_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_router/t_transport_router.cpp:Check_Routing_Test3_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_router/t_transport_router.cpp:Check_Routing_Test4_json">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_router/t_transport_router.cpp:TransportRoute">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_router/t_transport_router.cpp:TransportRouteTest">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_router/t_transport_router.cpp:s12_final_opentest_1">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_router/t_transport_router.cpp:s12_final_opentest_2">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/tests/transport_router/t_transport_router.cpp:s12_final_opentest_3">Checked</value>
-   </valuemap>
+   <valuemap type="QVariantMap" key="AutoTest.CheckStates"/>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
    <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey"/>
@@ -171,8 +79,8 @@
     <value type="QString" key="ClangTools.DiagnosticConfig">Builtin.DefaultTidyAndClazy</value>
     <value type="int" key="ClangTools.ParallelJobs">2</value>
     <valuelist type="QVariantList" key="ClangTools.SelectedDirs">
-     <value type="QString">/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/src</value>
      <value type="QString">/</value>
+     <value type="QString">/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/src</value>
     </valuelist>
     <valuelist type="QVariantList" key="ClangTools.SelectedFiles"/>
     <valuelist type="QVariantList" key="ClangTools.SuppressedDiagnostics"/>
@@ -401,153 +309,37 @@
     <value type="QString" key="Analyzer.Valgrind.SelfModifyingCodeDetection">2</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
     <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">/usr/bin/valgrind</value>
+    <valuelist type="QVariantList" key="Analyzer.Valgrind.VisibleErrorKinds">
+     <value type="QString">0</value>
+     <value type="QString">1</value>
+     <value type="QString">2</value>
+     <value type="QString">3</value>
+     <value type="QString">4</value>
+     <value type="QString">5</value>
+     <value type="QString">6</value>
+     <value type="QString">7</value>
+     <value type="QString">8</value>
+     <value type="QString">9</value>
+     <value type="QString">10</value>
+     <value type="QString">11</value>
+     <value type="QString">12</value>
+     <value type="QString">13</value>
+     <value type="QString">14</value>
+    </valuelist>
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">appc</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.appc</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">appc</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">false</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/build/Desktop-Debug/src</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectSystime">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">6</value>
-    <value type="QString" key="Analyzer.Valgrind.LeakCheckOnFinish">2</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="Analyzer.Valgrind.SuppressionFiles"/>
-    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">/usr/bin/valgrind</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">test_json</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.test_json</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">test_json</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">transport_catalogue</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.transport_catalogue</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">transport_catalogue</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/build/Desktop-Debug/tests/json</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/build/Desktop-Debug</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.2">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectSystime">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">6</value>
-    <value type="QString" key="Analyzer.Valgrind.LeakCheckOnFinish">2</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">/usr/bin/valgrind</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">benchmark</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.benchmark</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">benchmark</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/build/Desktop-Debug/tests/benchmark</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.3">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectSystime">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">6</value>
-    <value type="QString" key="Analyzer.Valgrind.LeakCheckOnFinish">2</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">/usr/bin/valgrind</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">test_catalogue</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.test_catalogue</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">test_catalogue</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/build/Desktop-Debug/tests/transport_catalogue</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.4">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectSystime">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">6</value>
-    <value type="QString" key="Analyzer.Valgrind.LeakCheckOnFinish">2</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">/usr/bin/valgrind</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">test_renderer</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.test_renderer</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">test_renderer</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/build/Desktop-Debug/tests/renderer</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.5">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectSystime">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">6</value>
-    <value type="QString" key="Analyzer.Valgrind.LeakCheckOnFinish">2</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">/usr/bin/valgrind</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">test_json_reader</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.test_json_reader</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">test_json_reader</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/build/Desktop-Debug/tests/json_reader</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.6">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.CollectSystime">true</value>
-    <value type="QString" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">6</value>
-    <value type="QString" key="Analyzer.Valgrind.LeakCheckOnFinish">2</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">/usr/bin/valgrind</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">test_router</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.test_router</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">test_router</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/harshow/Projects/cpp_practicum/sprint12/15_1_transport_catalogue/build/Desktop-Debug/tests/transport_router</value>
-   </valuemap>
-   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">7</value>
+   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
  </data>
  <data>
