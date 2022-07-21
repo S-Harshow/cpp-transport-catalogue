@@ -1,0 +1,4 @@
+#pragma once
+
+// version variable that will be substituted by cmake
+const char* TEST_FILES_PATH = "@CMAKE_SOURCE_DIR@";
